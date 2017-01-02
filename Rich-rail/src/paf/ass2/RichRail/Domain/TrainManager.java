@@ -24,7 +24,7 @@ public class TrainManager {
         }
 
         if (Result == null) {
-            throw new NullPointerException("Train " + name + " not found in the trainList");
+            throw new NullPointerException("Train " + name + " does not exist");
         }
         return Result;
     }

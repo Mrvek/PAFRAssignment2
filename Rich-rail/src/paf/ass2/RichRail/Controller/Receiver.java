@@ -1,4 +1,4 @@
-package paf.ass2.RichRail.DSL;
+package paf.ass2.RichRail.Controller;
 
 import paf.ass2.RichRail.Domain.Train;
 import paf.ass2.RichRail.Domain.TrainManager;
@@ -46,15 +46,18 @@ public class Receiver {
 
     private boolean remove(String train, String wagon) {
         TrainManager.remove(train, wagon);
+        Logger.log("Wagon " + wagon + " removed from train " + train);
         return true;
     }
 
     private boolean delete(String type, String name) {
         if (type.toLowerCase().equals("train")) {
             TrainManager.deleteTrain(name);
+            Logger.log("deleted train " + name);
             return true;
         } else if (type.toLowerCase().equals("wagon")) {
             WagonManager.deleteWagon(name);
+            Logger.log("deleted wagon " + name);
             return true;
         }
         return false;
@@ -63,11 +66,13 @@ public class Receiver {
     private boolean getSeats(String type, String name) {
         if (type.toLowerCase().equals("train")) {
             int seats = TrainManager.getSeats(name);
+            Logger.log("Number of seats in train " + name + ": " + seats);
             /*TODO: return number to GUI*/
             return true;
         }
         else if (type.toLowerCase().equals("wagon")) {
             int seats = WagonManager.getSeats(name);
+            Logger.log("Number of seats in wagon " + name + ": " + seats);
             /*TODO: return number to GUI*/
             return true;
         }
@@ -79,6 +84,7 @@ public class Receiver {
             Wagon wagon = WagonManager.getWagon(wagonname);
             Train train = TrainManager.getTrain(trainname);
             train.addWagon(wagon);
+            Logger.log("Added wagon " + wagonname + " to train " + trainname);
             return true;
         } catch (NullPointerException e) {
             Logger.logWarning(e);
@@ -92,11 +98,12 @@ public class Receiver {
 
         } else if (splitted[1].toLowerCase().equals("wagon") && splitted.length >= 3) {
             String name = splitted[2];
-            if (splitted[3].toLowerCase().equals("numseats") && splitted.length == 5) {
+            if (splitted.length == 5 && splitted[3].toLowerCase().equals("numseats") ) {
                 return createWagon(splitted[4], name);
 
             }else {
                 WagonManager.createWagon(name);
+                Logger.log("Wagon " + name + " created");
                 return true;
             }
         }
@@ -105,14 +112,31 @@ public class Receiver {
 
     private boolean createTrain(String name) {
         TrainManager.createTrain(name);
+        Logger.log("Train " + name + " created");
         return true;
     }
 
     private boolean createWagon(String seats, String name) {
         int numseats = Integer.parseInt(seats);
         WagonManager.createWagon(name, numseats);
+        Logger.log("Wagon " + name + " created with " + seats + " seats");
         return true;
     }
 
 
+    public static void main(String args[]) {
+        /**test for usage of the controller, remove after construction of GUI*/
+        Receiver r = new Receiver();
+        r.executeCommand("new train flip");
+        r.executeCommand("new wagon flap");
+        r.executeCommand("add flap to flip");
+        r.executeCommand("new wagon flip numseats 18");
+        r.executeCommand("add flip to flip");
+        r.executeCommand("getnumseats train flip");
+        r.executeCommand("remove flip from flip");
+        r.executeCommand("delete wagon flip");
+        r.executeCommand("delete train flip");
+        r.executeCommand("delete wagon flap");
+
+    }
 }

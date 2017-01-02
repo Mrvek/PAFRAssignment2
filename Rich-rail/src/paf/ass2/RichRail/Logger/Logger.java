@@ -1,6 +1,6 @@
 package paf.ass2.RichRail.Logger;
 
-import paf.ass2.RichRail.DSL.Receiver;
+import paf.ass2.RichRail.Controller.Receiver;
 import paf.ass2.RichRail.Domain.Train;
 
 import java.util.List;

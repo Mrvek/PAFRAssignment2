@@ -28,7 +28,7 @@ public class WagonManager {
         }
 
         if (Result == null) {
-            throw new NullPointerException("Wagon " + name + " not found in the wagonList");
+            throw new NullPointerException("Wagon " + name + " does not exist");
         }
         return Result;
     }
