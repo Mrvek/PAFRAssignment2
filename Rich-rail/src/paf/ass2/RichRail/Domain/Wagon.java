@@ -7,6 +7,11 @@ public class Wagon {
     private String Name;
     private int seats;
 
+    public Wagon(String name, int seats) {
+        Name = name;
+        this.seats = seats;
+    }
+
     public String getName() {
         return Name;
     }
