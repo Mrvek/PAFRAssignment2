@@ -15,6 +15,8 @@ public class Application {
     private JTextArea rightPane;
     private JTextField commitMessage;
     private JButton commit;
+    private JButton newFrame;
+    private JButton closeFrame;
     public String name;
 
     public Application() {
@@ -32,6 +34,24 @@ public class Application {
                 commitMessage.setText("");
             }
 
+        });
+        newFrame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("RichRails");
+                frame.setContentPane(new Application().mainPanel);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        closeFrame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton component = (JButton) e.getSource();
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(component);
+                frame.dispose();
+            }
         });
     }
     public void updateWindows(String object, String text){
