@@ -17,14 +17,14 @@ import java.util.*;
  * Knowledge of external and GUI logs are together here because the logger would else become a chaos of classconnections
  * and this way they are still separate of each other.
  */
-class LogsHolder {
+public class LogsHolder {
     private HashMap<ITextLog, Boolean> textlogs = new HashMap<>();
     private HashMap<IObjectLog, Boolean> objectlogs = new HashMap<>();
 
     private Map<String, GUIObject> GUIObjects = new HashMap<>();
     private Map<String, GUIText> GUITexts = new HashMap<>();
 
-    LogsHolder() {
+    public LogsHolder() {
 //        GUI logs, always enabled
         GUIObjects.put("DSL", new DSL());
         GUITexts.put("DSL", new paf.ass2.RichRail.Logger.TextLogs.GUI.DSL());
@@ -34,7 +34,6 @@ class LogsHolder {
         textlogs.put(new TXTT("logs" + File.separator + "textlog.txt"), true);
         objectlogs.put(new TXTO("logs" + File.separator + "objectlog.txt"), true);
     }
-
 
     public String getGUIObject(String GUI) {
         IObjectLog get =  GUIObjects.get(GUI);
