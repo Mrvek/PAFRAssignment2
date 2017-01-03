@@ -1,9 +1,6 @@
 package paf.ass2.RichRail.Controller;
 
-import paf.ass2.RichRail.Domain.Train;
-import paf.ass2.RichRail.Domain.TrainManager;
-import paf.ass2.RichRail.Domain.Wagon;
-import paf.ass2.RichRail.Domain.WagonManager;
+import paf.ass2.RichRail.Domain.*;
 import paf.ass2.RichRail.Logger.Logger;
 
 /**
