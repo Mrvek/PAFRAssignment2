@@ -30,8 +30,8 @@ public class Application {
 
             private void updateWindows(LogsHolder lh){
                 System.out.println("ding!" + lh.getGUIObject("DSL") + lh.getGUIText("DSL"));
-                leftPane.append(lh.getGUIObject("DSL"));
-                rightPane.append(lh.getGUIText("DSL"));
+                leftPane.append(lh.getGUIObject("DSL") + "Text Left\n");
+                rightPane.append(lh.getGUIText("DSL") + "Text Right\n");
             }
         });
     }
