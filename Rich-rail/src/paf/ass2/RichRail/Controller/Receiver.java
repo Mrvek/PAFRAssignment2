@@ -44,6 +44,7 @@ public class Receiver {
     private boolean remove(String train, String wagon) {
         TrainManager.remove(train, wagon);
         Logger.log("Wagon " + wagon + " removed from train " + train);
+        TrainManager.exportTrains();
         return true;
     }
 
@@ -55,6 +56,7 @@ public class Receiver {
         } else if (type.toLowerCase().equals("wagon")) {
             WagonManager.deleteWagon(name);
             Logger.log("deleted wagon " + name);
+            TrainManager.exportTrains();
             return true;
         }
         return false;
@@ -64,13 +66,12 @@ public class Receiver {
         if (type.toLowerCase().equals("train")) {
             int seats = TrainManager.getSeats(name);
             Logger.log("Number of seats in train " + name + ": " + seats);
-            /*TODO: return number to GUI*/
+            TrainManager.exportTrains();
             return true;
         }
         else if (type.toLowerCase().equals("wagon")) {
             int seats = WagonManager.getSeats(name);
             Logger.log("Number of seats in wagon " + name + ": " + seats);
-            /*TODO: return number to GUI*/
             return true;
         }
         return false;
@@ -82,6 +83,7 @@ public class Receiver {
             Train train = TrainManager.getTrain(trainname);
             train.addWagon(wagon);
             Logger.log("Added wagon " + wagonname + " to train " + trainname);
+            TrainManager.exportTrains();
             return true;
         } catch (NullPointerException e) {
             Logger.logWarning(e);
@@ -100,6 +102,7 @@ public class Receiver {
 
             }else {
                 WagonManager.createWagon(name);
+                TrainManager.exportTrains();
                 Logger.log("Wagon " + name + " created");
                 return true;
             }
@@ -110,6 +113,7 @@ public class Receiver {
     private boolean createTrain(String name) {
         TrainManager.createTrain(name);
         Logger.log("Train " + name + " created");
+        TrainManager.exportTrains();
         return true;
     }
 
@@ -117,6 +121,7 @@ public class Receiver {
         int numseats = Integer.parseInt(seats);
         WagonManager.createWagon(name, numseats);
         Logger.log("Wagon " + name + " created with " + seats + " seats");
+        TrainManager.exportTrains();
         return true;
     }
 
@@ -131,9 +136,5 @@ public class Receiver {
         r.executeCommand("add flip to flip");
         r.executeCommand("getnumseats train flip");
         r.executeCommand("remove flip from flip");
-        r.executeCommand("delete wagon flip");
-        r.executeCommand("delete train flip");
-        r.executeCommand("delete wagon flap");
-
     }
 }

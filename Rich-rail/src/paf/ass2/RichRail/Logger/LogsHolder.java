@@ -1,11 +1,14 @@
 package paf.ass2.RichRail.Logger;
 
 import paf.ass2.RichRail.Logger.ObjectLogs.*;
+import paf.ass2.RichRail.Logger.ObjectLogs.External.TXTO;
 import paf.ass2.RichRail.Logger.ObjectLogs.GUI.DSL;
 import paf.ass2.RichRail.Logger.ObjectLogs.GUI.GUIObject;
 import paf.ass2.RichRail.Logger.TextLogs.*;
+import paf.ass2.RichRail.Logger.TextLogs.External.TXTT;
 import paf.ass2.RichRail.Logger.TextLogs.GUI.GUIText;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -28,7 +31,8 @@ class LogsHolder {
 
 
 //        External logs
-
+        textlogs.put(new TXTT("logs" + File.separator + "textlog.txt"), true);
+        objectlogs.put(new TXTO("logs" + File.separator + "objectlog.txt"), true);
     }
 
 

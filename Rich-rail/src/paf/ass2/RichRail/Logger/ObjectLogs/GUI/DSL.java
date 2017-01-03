@@ -20,14 +20,13 @@ public class DSL extends GUIObject {
             objectLog += "(" + name + ":" + wagonList.get(name) + ") ";
         }
 
-        objectLog += "\ntrains\n";
+        objectLog += "\ntrains";
         Set<String> trainnames = trainList.keySet();
         for (String name : trainnames) {
-            objectLog += "(" + name + ")";
+            objectLog += "\n(" + name + ")";
             for (String wagonname : trainList.get(name)) {
                 objectLog += "-(" + wagonname + ")";
             }
-            objectLog += "\n";
         }
     }
     @Override

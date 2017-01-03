@@ -1,0 +1,39 @@
+testingtesting
+testing
+Train flip created
+Wagon flap created
+Added wagon flap to train flip
+Wagon flip created with 18 seats
+Added wagon flip to train flip
+Number of seats in train flip: 38
+Wagon flip removed from train flip
+deleted wagon flip
+deleted train flip
+deleted wagon flap
+Train flip created
+Wagon flap created
+Added wagon flap to train flip
+Wagon flip created with 18 seats
+Added wagon flip to train flip
+Number of seats in train flip: 38
+Wagon flip removed from train flip
+deleted wagon flip
+deleted train flip
+deleted wagon flap
+Train flip created
+Wagon flap created
+Added wagon flap to train flip
+Wagon flip created with 18 seats
+Added wagon flip to train flip
+Number of seats in train flip: 38
+Wagon flip removed from train flip
+deleted wagon flip
+deleted train flip
+deleted wagon flap
+Train flip created
+Wagon flap created
+Added wagon flap to train flip
+Wagon flip created with 18 seats
+Added wagon flip to train flip
+Number of seats in train flip: 38
+Wagon flip removed from train flip
