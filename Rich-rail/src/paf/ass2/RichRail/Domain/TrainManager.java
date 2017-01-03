@@ -30,7 +30,7 @@ public class TrainManager {
     }
 
     public static void exportTrains() {
-        Logger.export(trainList);
+        Logger.export(trainList, WagonManager.getList());
     }
 
     public static int getSeats(String name) {

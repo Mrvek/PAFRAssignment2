@@ -42,4 +42,8 @@ public class WagonManager {
         Wagon wagon = getWagon(name);
         wagonList.remove(wagon);
     }
+
+    public static List<Wagon> getList() {
+        return wagonList;
+    }
 }
