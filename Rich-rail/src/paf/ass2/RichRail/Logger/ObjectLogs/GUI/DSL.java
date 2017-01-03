@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Log with output to the GUI
  */
-public class DSLObject implements IObjectLog {
+public class DSL extends GUIObject {
     private String objectLog;
 
     @Override
@@ -30,7 +30,7 @@ public class DSLObject implements IObjectLog {
             objectLog += "\n";
         }
     }
-
+    @Override
     public String toString() {
         return objectLog;
     }

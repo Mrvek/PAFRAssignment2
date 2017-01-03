@@ -7,7 +7,7 @@ import java.util.LinkedList;
 /**
  * Created by Mitchell on 03/01/2017.
  */
-public class DSLText implements ITextLog {
+public class DSL extends GUIText {
     private LinkedList<String> logholder = new LinkedList<>();
     private int availablerows = 10;
     @Override

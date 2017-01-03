@@ -1,27 +1,30 @@
 package paf.ass2.RichRail.Logger;
 
 import paf.ass2.RichRail.Logger.ObjectLogs.*;
-import paf.ass2.RichRail.Logger.ObjectLogs.GUI.DSLObject;
+import paf.ass2.RichRail.Logger.ObjectLogs.GUI.DSL;
+import paf.ass2.RichRail.Logger.ObjectLogs.GUI.GUIObject;
 import paf.ass2.RichRail.Logger.TextLogs.*;
-import paf.ass2.RichRail.Logger.TextLogs.GUI.DSLText;
+import paf.ass2.RichRail.Logger.TextLogs.GUI.GUIText;
 
 import java.util.*;
 
 /**
  * This Class has knowledge of all logs and send the incoming messages to the enabled logs.
  * The constructor is used as a config for logs to add/remove or enable/disable them.
+ * Knowledge of external and GUI logs are together here because the logger would else become a chaos of classconnections
+ * and this way they are still separate of each other.
  */
 class LogsHolder {
     private HashMap<ITextLog, Boolean> textlogs = new HashMap<>();
     private HashMap<IObjectLog, Boolean> objectlogs = new HashMap<>();
 
-    private Map<String, IObjectLog> GUIObjects = new HashMap<>();
-    private Map<String, ITextLog> GUITexts = new HashMap<>();
+    private Map<String, GUIObject> GUIObjects = new HashMap<>();
+    private Map<String, GUIText> GUITexts = new HashMap<>();
 
     LogsHolder() {
 //        GUI logs, always enabled
-        GUIObjects.put("DSL", new DSLObject());
-        GUITexts.put("DSL", new DSLText());
+        GUIObjects.put("DSL", new DSL());
+        GUITexts.put("DSL", new paf.ass2.RichRail.Logger.TextLogs.GUI.DSL());
 
 
 //        External logs
@@ -48,6 +51,12 @@ class LogsHolder {
                 L.log(s);
             }
         }
+
+        Set<String> GUIs = GUITexts.keySet();
+        for (String GUIname : GUIs) {
+            ITextLog GUI = GUITexts.get(GUIname);
+            GUI.log(s);
+        }
     }
 
     void logWarning(Exception e) {
@@ -57,6 +66,12 @@ class LogsHolder {
             if(enabler) {
                 L.logWarning(e);
             }
+        }
+
+        Set<String> GUIs = GUITexts.keySet();
+        for (String GUIname : GUIs) {
+            ITextLog GUI = GUITexts.get(GUIname);
+            GUI.logWarning(e);
         }
     }
 
@@ -68,6 +83,12 @@ class LogsHolder {
                 L.logError(e);
             }
         }
+
+        Set<String> GUIs = GUITexts.keySet();
+        for (String GUIname : GUIs) {
+            ITextLog GUI = GUITexts.get(GUIname);
+            GUI.logError(e);
+        }
     }
 
     void LogObject(Map<String, Number> wagonlist, Map<String, LinkedList<String>> trainlist) {
@@ -77,6 +98,12 @@ class LogsHolder {
             if (enabler) {
                 L.export(trainlist, wagonlist);
             }
+        }
+
+        Set<String> GUIs = GUIObjects.keySet();
+        for (String GUIname : GUIs) {
+            IObjectLog GUI = GUIObjects.get(GUIname);
+            GUI.export(trainlist, wagonlist);
         }
     }
 }
