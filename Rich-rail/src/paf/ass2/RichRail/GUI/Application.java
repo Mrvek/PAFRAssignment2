@@ -15,25 +15,28 @@ public class Application {
     private JTextArea rightPane;
     private JTextField commitMessage;
     private JButton commit;
+    public String name;
 
     public Application() {
+        Logger.registerGUI(this);
+        name = "DSL";
         commit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String command = commitMessage.getText();
                 Receiver rec = new Receiver();
-                rec.executeCommand(command);
-                LogsHolder lh = new LogsHolder();
-                updateWindows(lh);
+                boolean cmd = rec.executeCommand(command);
+                if (cmd == false) {
+                    Logger.log("Command not found");
+                }
                 commitMessage.setText("");
             }
 
-            private void updateWindows(LogsHolder lh){
-                System.out.println("ding!" + lh.getGUIObject("DSL") + lh.getGUIText("DSL"));
-                leftPane.append(lh.getGUIObject("DSL") + "Text Left\n");
-                rightPane.append(lh.getGUIText("DSL") + "Text Right\n");
-            }
         });
+    }
+    public void updateWindows(String object, String text){
+        leftPane.setText(object);
+        rightPane.setText(text);
     }
 
     public static void main(String[] args) {

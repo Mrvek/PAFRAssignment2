@@ -2,6 +2,7 @@ package paf.ass2.RichRail.Logger;
 
 import paf.ass2.RichRail.Domain.Train;
 import paf.ass2.RichRail.Domain.Wagon;
+import paf.ass2.RichRail.GUI.Application;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -50,4 +51,11 @@ public class Logger {
         config.LogObject(wagons, trains);
     }
 
+    public static LogsHolder getLogsHolder() {
+        return config;
+    }
+
+    public static void registerGUI(Application application) {
+        config.addGUI(application);
+    }
 }

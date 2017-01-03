@@ -10,7 +10,7 @@ import java.util.Set;
  * Log with output to the GUI
  */
 public class DSL extends GUIObject {
-    private String objectLog;
+    private String objectLog = "";
 
     @Override
     public void export(Map<String, LinkedList<String>> trainList, Map<String, Number> wagonList) {

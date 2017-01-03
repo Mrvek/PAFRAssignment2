@@ -1,5 +1,6 @@
 package paf.ass2.RichRail.Logger;
 
+import paf.ass2.RichRail.GUI.Application;
 import paf.ass2.RichRail.Logger.ObjectLogs.*;
 import paf.ass2.RichRail.Logger.ObjectLogs.External.TXTO;
 import paf.ass2.RichRail.Logger.ObjectLogs.GUI.DSL;
@@ -24,6 +25,8 @@ public class LogsHolder {
     private Map<String, GUIObject> GUIObjects = new HashMap<>();
     private Map<String, GUIText> GUITexts = new HashMap<>();
 
+    private List<Application> GUIs = new ArrayList<>();
+
     public LogsHolder() {
 //        GUI logs, always enabled
         GUIObjects.put("DSL", new DSL());
@@ -36,6 +39,7 @@ public class LogsHolder {
     }
 
     public String getGUIObject(String GUI) {
+        System.out.print(GUIObjects);
         IObjectLog get =  GUIObjects.get(GUI);
         return get.toString();
     }
@@ -59,7 +63,9 @@ public class LogsHolder {
         for (String GUIname : GUIs) {
             ITextLog GUI = GUITexts.get(GUIname);
             GUI.log(s);
+
         }
+        updateGUIs();
     }
 
     void logWarning(Exception e) {
@@ -76,6 +82,7 @@ public class LogsHolder {
             ITextLog GUI = GUITexts.get(GUIname);
             GUI.logWarning(e);
         }
+        updateGUIs();
     }
 
     void logError(Exception e) {
@@ -92,6 +99,7 @@ public class LogsHolder {
             ITextLog GUI = GUITexts.get(GUIname);
             GUI.logError(e);
         }
+        updateGUIs();
     }
 
     void LogObject(Map<String, Number> wagonlist, Map<String, LinkedList<String>> trainlist) {
@@ -107,6 +115,17 @@ public class LogsHolder {
         for (String GUIname : GUIs) {
             IObjectLog GUI = GUIObjects.get(GUIname);
             GUI.export(trainlist, wagonlist);
+        }
+        updateGUIs();
+    }
+
+    public void addGUI(Application application) {
+        GUIs.add(application);
+    }
+
+    private void updateGUIs() {
+        for (Application a : GUIs) {
+            a.updateWindows(getGUIObject(a.name), getGUIText(a.name));
         }
     }
 }
