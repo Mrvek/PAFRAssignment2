@@ -59,6 +59,13 @@ public class Train {
         } catch (NullPointerException e) {
             Logger.logWarning(e);
         }
+    }
 
+        public String toString() {
+            String result = "(" + name + ")";
+            for (Wagon w : Wagonlist) {
+                result += "-(" + w.getName() + ")";
+            }
+            return result;
     }
 }

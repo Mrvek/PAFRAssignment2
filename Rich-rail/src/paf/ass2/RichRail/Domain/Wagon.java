@@ -19,4 +19,8 @@ public class Wagon {
     public int getSeats() {
         return seats;
     }
+
+    public String toString() {
+        return "(" + Name + ":" + seats + ")";
+    }
 }
