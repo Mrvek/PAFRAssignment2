@@ -1,4 +1,4 @@
-package paf.ass2.RichRail.Logger;
+package paf.ass2.RichRail.Logger.TextLogs;
 
 /**
  * Created by Mitchell on 03/01/2017.
