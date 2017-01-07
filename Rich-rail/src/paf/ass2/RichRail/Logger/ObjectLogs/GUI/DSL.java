@@ -1,7 +1,5 @@
 package paf.ass2.RichRail.Logger.ObjectLogs.GUI;
 
-import paf.ass2.RichRail.Logger.ObjectLogs.IObjectLog;
-
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;

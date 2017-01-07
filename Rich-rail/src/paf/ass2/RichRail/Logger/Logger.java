@@ -15,21 +15,22 @@ import java.util.List;
  * This class converts the input to the requested output for the interfaces and gives this output to the Logconfig.
  */
 public class Logger {
-    private static LogsHolder config = new LogsHolder();
+    private static ObjectManager objectmaker = new ObjectManager();
+    private static TextManager textmaker = new TextManager();
 
     public static void log(String s) {
         System.out.println("SYSTEM:\t" + s);
-        config.logText(s);
+        textmaker.logText(s);
     }
 
     public static void logError(Exception e) {
         System.out.println("ERROR!:\t" + e.getMessage() + "\n\tSee for more information in the logs.");
-        config.logError(e);
+        textmaker.logError(e);
     }
 
     public static void logWarning(Exception e) {
         System.out.println("WARNING!:\t" + e.getMessage() + "\n\tSee for more information in the logs.");
-        config.logWarning(e);
+        textmaker.logWarning(e);
     }
 
 
@@ -48,14 +49,11 @@ public class Logger {
             trains.put(t.getName(), attachedwagons);
         }
 
-        config.LogObject(wagons, trains);
-    }
-
-    public static LogsHolder getLogsHolder() {
-        return config;
+        objectmaker.LogObject(wagons, trains);
     }
 
     public static void registerGUI(Application application) {
-        config.addGUI(application);
+        objectmaker.addGUI(application);
+        textmaker.addGUI(application);
     }
 }

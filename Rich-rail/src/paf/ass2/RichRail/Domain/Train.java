@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Train {
     private String name;
-    private List<Wagon> Wagonlist = new ArrayList<>();
+    private List<Wagon> wagonlist = new ArrayList<>();
 
 
     public Train(String name) {
@@ -23,16 +23,17 @@ public class Train {
 
 
     public List<Wagon> getWagonlist() {
-        return Wagonlist;
+        return wagonlist;
     }
 
     public void addWagon(Wagon wagon) {
-        Wagonlist.add(wagon);
+        wagonlist.add(wagon);
+        Logger.log("Added wagon " + wagon.getName() + " to train " + name);
     }
 
-    public Wagon getWagon(String name) throws NullPointerException {
+    private Wagon getWagon(String name) throws NullPointerException {
             Wagon Result = null;
-            for (Wagon i : Wagonlist) {
+            for (Wagon i : wagonlist) {
                 if (i.getName().equals(name)) {
                     Result = i;
                 }
@@ -46,7 +47,7 @@ public class Train {
 
     public int getSeats() {
         int seats = 0;
-        for (Wagon w : Wagonlist) {
+        for (Wagon w : wagonlist) {
             seats += w.getSeats();
         }
         return seats;
@@ -55,7 +56,7 @@ public class Train {
     public void remove(String wagon) {
         try {
             Wagon target = getWagon(wagon);
-            Wagonlist.remove(target);
+            wagonlist.remove(target);
         } catch (NullPointerException e) {
             Logger.logWarning(e);
         }
@@ -63,7 +64,7 @@ public class Train {
 
         public String toString() {
             String result = "(" + name + ")";
-            for (Wagon w : Wagonlist) {
+            for (Wagon w : wagonlist) {
                 result += "-(" + w.getName() + ")";
             }
             return result;

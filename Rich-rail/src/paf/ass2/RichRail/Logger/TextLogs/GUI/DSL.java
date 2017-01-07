@@ -1,7 +1,5 @@
 package paf.ass2.RichRail.Logger.TextLogs.GUI;
 
-import paf.ass2.RichRail.Logger.TextLogs.ITextLog;
-
 import java.util.LinkedList;
 
 /**
@@ -9,7 +7,7 @@ import java.util.LinkedList;
  */
 public class DSL extends GUIText {
     private LinkedList<String> logholder = new LinkedList<>();
-    private int availablerows = 10;
+
     @Override
     public void log(String s) {
         add(s);
@@ -26,6 +24,7 @@ public class DSL extends GUIText {
     }
 
     private void add(String s) {
+        int availablerows = 10;
         while (logholder.size() >= availablerows) {
             logholder.removeFirst();
         }

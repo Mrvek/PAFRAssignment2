@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by Mitchell on 03/01/2017.
  */
 public class TXTO implements IObjectLog {
-    String filepath;
+    private String filepath;
 
     public TXTO(String path) {
         filepath = path;

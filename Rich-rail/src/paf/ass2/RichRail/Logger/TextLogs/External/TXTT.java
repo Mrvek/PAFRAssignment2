@@ -19,7 +19,7 @@ public class TXTT implements ITextLog{
     private void write(String loginfo) {
         try {
             File file = new File(filepath);
-            FileWriter fw = null;
+            FileWriter fw;
             fw = new FileWriter(file,true);
             fw.write("\n" + loginfo);
             fw.close();

@@ -43,7 +43,6 @@ public class Receiver {
 
     private boolean remove(String train, String wagon) {
         TrainManager.remove(train, wagon);
-        Logger.log("Wagon " + wagon + " removed from train " + train);
         TrainManager.exportTrains();
         return true;
     }
@@ -51,11 +50,10 @@ public class Receiver {
     private boolean delete(String type, String name) {
         if (type.toLowerCase().equals("train")) {
             TrainManager.deleteTrain(name);
-            Logger.log("deleted train " + name);
+            TrainManager.exportTrains();
             return true;
         } else if (type.toLowerCase().equals("wagon")) {
             WagonManager.deleteWagon(name);
-            Logger.log("deleted wagon " + name);
             TrainManager.exportTrains();
             return true;
         }
@@ -64,14 +62,11 @@ public class Receiver {
 
     private boolean getSeats(String type, String name) {
         if (type.toLowerCase().equals("train")) {
-            int seats = TrainManager.getSeats(name);
-            Logger.log("Number of seats in train " + name + ": " + seats);
-            TrainManager.exportTrains();
+            TrainManager.getSeats(name);
             return true;
         }
         else if (type.toLowerCase().equals("wagon")) {
-            int seats = WagonManager.getSeats(name);
-            Logger.log("Number of seats in wagon " + name + ": " + seats);
+            WagonManager.getSeats(name);
             return true;
         }
         return false;
@@ -82,7 +77,6 @@ public class Receiver {
             Wagon wagon = WagonManager.getWagon(wagonname);
             Train train = TrainManager.getTrain(trainname);
             train.addWagon(wagon);
-            Logger.log("Added wagon " + wagonname + " to train " + trainname);
             TrainManager.exportTrains();
             return true;
         } catch (NullPointerException e) {
@@ -103,7 +97,6 @@ public class Receiver {
             }else {
                 WagonManager.createWagon(name);
                 TrainManager.exportTrains();
-                Logger.log("Wagon " + name + " created");
                 return true;
             }
         }
@@ -112,7 +105,6 @@ public class Receiver {
 
     private boolean createTrain(String name) {
         TrainManager.createTrain(name);
-        Logger.log("Train " + name + " created");
         TrainManager.exportTrains();
         return true;
     }
@@ -120,7 +112,6 @@ public class Receiver {
     private boolean createWagon(String seats, String name) {
         int numseats = Integer.parseInt(seats);
         WagonManager.createWagon(name, numseats);
-        Logger.log("Wagon " + name + " created with " + seats + " seats");
         TrainManager.exportTrains();
         return true;
     }

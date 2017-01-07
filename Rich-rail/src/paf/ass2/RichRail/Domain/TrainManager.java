@@ -13,6 +13,7 @@ public class TrainManager {
     public static void createTrain(String name) {
         Train newtrain = new Train(name);
         trainList.add(newtrain);
+        Logger.log("Train " + name + " created");
     }
 
     public static Train getTrain(String name) throws NullPointerException {
@@ -35,16 +36,19 @@ public class TrainManager {
 
     public static int getSeats(String name) {
         Train train = getTrain(name);
+        Logger.log("Number of seats in train " + name + ": " + train.getSeats());
         return train.getSeats();
     }
 
     public static void deleteTrain(String name) {
         Train train = getTrain(name);
         trainList.remove(train);
+        Logger.log("deleted train " + name);
     }
 
     public static void remove(String train, String wagon) {
         Train target = getTrain(train);
         target.remove(wagon);
+        Logger.log("Wagon " + wagon + " removed from train " + train);
     }
 }

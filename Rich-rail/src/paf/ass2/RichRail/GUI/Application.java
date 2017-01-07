@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /*
  * Created by Jochem Kuus on 3-1-2017.
  */
-public class Application {
+public class Application implements IGUI{
     private JPanel mainPanel;
     private JTextArea leftPane;
     private JTextArea rightPane;
@@ -28,7 +28,7 @@ public class Application {
                 String command = commitMessage.getText();
                 Receiver rec = new Receiver();
                 boolean cmd = rec.executeCommand(command);
-                if (cmd == false) {
+                if (!cmd) {
                     Logger.log("Command not found");
                 }
                 commitMessage.setText("");
@@ -54,9 +54,15 @@ public class Application {
             }
         });
     }
-    public void updateWindows(String object, String text){
-        leftPane.setText(object);
+
+    @Override
+    public void updateText(String text) {
         rightPane.setText(text);
+    }
+
+    @Override
+    public void updateObject(String object) {
+        leftPane.setText(object);
     }
 
     public static void main(String[] args) {
