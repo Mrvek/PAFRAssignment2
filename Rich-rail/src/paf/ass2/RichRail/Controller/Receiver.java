@@ -1,6 +1,9 @@
 package paf.ass2.RichRail.Controller;
 
-import paf.ass2.RichRail.Domain.*;
+import paf.ass2.RichRail.Domain.Train;
+import paf.ass2.RichRail.Domain.TrainManager;
+import paf.ass2.RichRail.Domain.Wagon;
+import paf.ass2.RichRail.Domain.WagonManager;
 import paf.ass2.RichRail.Logger.Logger;
 
 /**
@@ -14,7 +17,7 @@ public class Receiver {
                 return newObject(splitted);
 
             case "add":
-                if(splitted.length == 4) {
+                if (splitted.length == 4) {
                     return addWagonToTrain(splitted[1], splitted[3]);
                 }
                 return false;
@@ -36,7 +39,8 @@ public class Receiver {
                     return remove(splitted[3], splitted[1]);
                 }
                 return false;
-            default: return false;
+            default:
+                return false;
         }
     }
 
@@ -64,8 +68,7 @@ public class Receiver {
         if (type.toLowerCase().equals("train")) {
             TrainManager.getSeats(name);
             return true;
-        }
-        else if (type.toLowerCase().equals("wagon")) {
+        } else if (type.toLowerCase().equals("wagon")) {
             WagonManager.getSeats(name);
             return true;
         }
@@ -91,10 +94,10 @@ public class Receiver {
 
         } else if (splitted[1].toLowerCase().equals("wagon") && splitted.length >= 3) {
             String name = splitted[2];
-            if (splitted.length == 5 && splitted[3].toLowerCase().equals("numseats") ) {
+            if (splitted.length == 5 && splitted[3].toLowerCase().equals("numseats")) {
                 return createWagon(splitted[4], name);
 
-            }else {
+            } else {
                 WagonManager.createWagon(name);
                 TrainManager.exportTrains();
                 return true;

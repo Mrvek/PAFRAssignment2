@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Mitchell on 03/01/2017.
  */
-public class TXTT implements ITextLog{
+public class TXTT implements ITextLog {
     private String filepath;
 
     public TXTT(String filepath) {
@@ -20,7 +20,7 @@ public class TXTT implements ITextLog{
         try {
             File file = new File(filepath);
             FileWriter fw;
-            fw = new FileWriter(file,true);
+            fw = new FileWriter(file, true);
             fw.write("\n" + loginfo);
             fw.close();
         } catch (IOException e) {

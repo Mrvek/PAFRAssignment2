@@ -24,11 +24,13 @@ public class TextManager {
 //        External Files
         textlogs.put(new TXTT("logs" + File.separator + "Text" + File.separator + "textlog.txt"), true);
     }
+
+
     void logText(String s) {
         Set<ITextLog> logs = textlogs.keySet();
         for (ITextLog L : logs) {
             Boolean enabler = textlogs.get(L);
-            if(enabler) {
+            if (enabler) {
                 L.log(s);
             }
         }
@@ -46,7 +48,7 @@ public class TextManager {
         Set<ITextLog> logs = textlogs.keySet();
         for (ITextLog L : logs) {
             Boolean enabler = textlogs.get(L);
-            if(enabler) {
+            if (enabler) {
                 L.logWarning(e);
             }
         }
@@ -63,7 +65,7 @@ public class TextManager {
         Set<ITextLog> logs = textlogs.keySet();
         for (ITextLog L : logs) {
             Boolean enabler = textlogs.get(L);
-            if(enabler) {
+            if (enabler) {
                 L.logError(e);
             }
         }

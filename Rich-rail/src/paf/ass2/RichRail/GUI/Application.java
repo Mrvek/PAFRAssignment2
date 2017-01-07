@@ -1,7 +1,8 @@
 package paf.ass2.RichRail.GUI;
 
 import paf.ass2.RichRail.Controller.Receiver;
-import paf.ass2.RichRail.Logger.*;
+import paf.ass2.RichRail.Logger.Logger;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 /*
  * Created by Jochem Kuus on 3-1-2017.
  */
-public class Application implements IGUI{
+public class Application implements IGUI {
     private JPanel mainPanel;
     private JTextArea leftPane;
     private JTextArea rightPane;

@@ -32,17 +32,17 @@ public class Train {
     }
 
     private Wagon getWagon(String name) throws NullPointerException {
-            Wagon Result = null;
-            for (Wagon i : wagonlist) {
-                if (i.getName().equals(name)) {
-                    Result = i;
-                }
+        Wagon Result = null;
+        for (Wagon i : wagonlist) {
+            if (i.getName().equals(name)) {
+                Result = i;
             }
+        }
 
-            if (Result == null) {
-                throw new NullPointerException("Wagon " + name + " not found in train " + this.name);
-            }
-            return Result;
+        if (Result == null) {
+            throw new NullPointerException("Wagon " + name + " not found in train " + this.name);
+        }
+        return Result;
     }
 
     public int getSeats() {
@@ -62,11 +62,11 @@ public class Train {
         }
     }
 
-        public String toString() {
-            String result = "(" + name + ")";
-            for (Wagon w : wagonlist) {
-                result += "-(" + w.getName() + ")";
-            }
-            return result;
+    public String toString() {
+        String result = "(" + name + ")";
+        for (Wagon w : wagonlist) {
+            result += "-(" + w.getName() + ")";
+        }
+        return result;
     }
 }

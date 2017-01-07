@@ -27,6 +27,7 @@ public class DSL extends GUIObject {
             }
         }
     }
+
     @Override
     public String toString() {
         return objectLog;

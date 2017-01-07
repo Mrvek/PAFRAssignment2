@@ -1,8 +1,9 @@
 package paf.ass2.RichRail.Domain;
 
+import paf.ass2.RichRail.Logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
-import paf.ass2.RichRail.Logger.Logger;
 
 /**
  * Created by Mitchell on 02/01/2017.

@@ -35,10 +35,9 @@ public class ObjectManager {
     }
 
     private String getGUIObject(String GUI) {
-        IObjectLog get =  GUIObjects.get(GUI);
+        IObjectLog get = GUIObjects.get(GUI);
         return get.toString();
     }
-
 
 
     void LogObject(Map<String, Number> wagonlist, Map<String, LinkedList<String>> trainlist) {

@@ -22,7 +22,7 @@ public class TXTO implements IObjectLog {
     @Override
     public void export(Map<String, LinkedList<String>> trainList, Map<String, Number> wagonList) {
         String result = "wagons\n";
-        for(String name : wagonList.keySet()) {
+        for (String name : wagonList.keySet()) {
             result += "(" + name + ":" + wagonList.get(name) + ") ";
         }
 

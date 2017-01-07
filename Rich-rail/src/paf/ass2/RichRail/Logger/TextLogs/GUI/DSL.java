@@ -28,7 +28,7 @@ public class DSL extends GUIText {
         while (logholder.size() >= availablerows) {
             logholder.removeFirst();
         }
-            logholder.add(s);
+        logholder.add(s);
     }
 
     public String toString() {
@@ -36,7 +36,7 @@ public class DSL extends GUIText {
         for (String row : logholder) {
             if (result.isEmpty()) {
                 result = row;
-            }else {
+            } else {
                 result += "\n" + row;
             }
         }
