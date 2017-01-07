@@ -10,9 +10,9 @@ import java.util.List;
 
 /**
  * Instead of system.out.println(String s) call Logger.print(String s).
- * this will give a systemoutput AND an logoutput for the enabled loggers.
+ * this will give a systemoutput AND an logoutput for the enabled loggers (GUI's included).
  * Warnings and Errors have their own methods.
- * This class converts the input to the requested output for the interfaces and gives this output to the Logconfig.
+ * This class converts the input to the requested output for the interfaces and gives this output to the corrosponding factory.
  */
 public class Logger {
     private static ObjectManager objectmaker = new ObjectManager();

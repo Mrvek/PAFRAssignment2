@@ -13,10 +13,9 @@ import java.io.File;
 import java.util.*;
 
 /**
- * This Class has knowledge of all logs and send the incoming messages to the enabled logs.
- * The constructor is used as a config for logs to add/remove or enable/disable them.
- * Knowledge of external and GUI logs are together here because the logger would else become a chaos of classconnections
- * and this way they are still separate of each other.
+ * This Class has knowledge of all objectlogs and send the incoming messages to the enabled logs.
+ * The constructor is used as a configure the logs to add/remove or enable/disable them.
+ * Knowledge of external and GUI logs are together here because they are both IObjectLogs.
  */
 public class ObjectManager {
     private HashMap<IObjectLog, Boolean> objectlogs = new HashMap<>();

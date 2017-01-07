@@ -27,7 +27,6 @@ public class Application implements IGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String command = commitMessage.getText();
-                Receiver rec = new Receiver();
                 boolean cmd = rec.executeCommand(command);
                 if (!cmd) {
                     Logger.log("Command not found");
